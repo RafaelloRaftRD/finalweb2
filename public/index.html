@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Coffee Shop - Order Online</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="container">
+            <h1>☕ Coffee Shop</h1>
+            <nav id="nav">
+                <button onclick="showSection('home')" class="nav-btn active">Home</button>
+                <button onclick="showSection('menu')" class="nav-btn">Menu</button>
+                <button onclick="showSection('orders')" class="nav-btn" id="ordersBtn" style="display:none;">My Orders</button>
+                <button onclick="showSection('auth')" class="nav-btn" id="authBtn">Login</button>
+                <button onclick="logout()" class="nav-btn" id="logoutBtn" style="display:none;">Logout</button>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="container">
+        <!-- Home Section -->
+        <section id="home" class="section active">
+            <div class="hero">
+                <h2>Welcome to Our Coffee Shop!</h2>
+                <p>Fresh coffee delivered to your door</p>
+                <button onclick="showSection('menu')" class="btn btn-primary">Order Now</button>
+            </div>
+        </section>
+
+        <!-- Auth Section (Login/Register) -->
+        <section id="auth" class="section">
+            <div class="auth-container">
+                <!-- Login Form -->
+                <div id="loginForm" class="auth-form">
+                    <h2>Login</h2>
+                    <input type="email" id="loginEmail" placeholder="Email" required>
+                    <input type="password" id="loginPassword" placeholder="Password" required>
+                    <button onclick="login()" class="btn btn-primary">Login</button>
+                    <p>Don't have an account? <a href="#" onclick="toggleAuthForm()">Register</a></p>
+                </div>
+
+                <!-- Register Form -->
+                <div id="registerForm" class="auth-form" style="display:none;">
+                    <h2>Register</h2>
+                    <input type="text" id="regUsername" placeholder="Username" required>
+                    <input type="email" id="regEmail" placeholder="Email" required>
+                    <input type="password" id="regPassword" placeholder="Password (min 6 chars)" required>
+                    <input type="tel" id="regPhone" placeholder="Phone (optional)">
+                    <input type="text" id="regAddress" placeholder="Address (optional)">
+                    <button onclick="register()" class="btn btn-primary">Register</button>
+                    <p>Already have an account? <a href="#" onclick="toggleAuthForm()">Login</a></p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Menu Section -->
+        <section id="menu" class="section">
+            <h2>Our Menu</h2>
+            <div id="weatherRecommendation" class="weather-box"></div>
+            <div id="menuGrid" class="menu-grid">
+                <!-- Products will be loaded here -->
+            </div>
+            
+            <!-- Cart -->
+            <div id="cart" class="cart" style="display:none;">
+                <h3>Your Cart</h3>
+                <div id="cartItems"></div>
+                <div class="cart-total">
+                    <strong>Total: $<span id="cartTotal">0.00</span></strong>
+                </div>
+                <input type="text" id="deliveryAddress" placeholder="Delivery Address *" required>
+                <textarea id="orderNotes" placeholder="Order notes (optional)"></textarea>
+                <button onclick="placeOrder()" class="btn btn-primary">Place Order</button>
+                <button onclick="clearCart()" class="btn btn-secondary">Clear Cart</button>
+            </div>
+        </section>
+
+        <!-- Orders Section -->
+        <section id="orders" class="section">
+            <h2>My Orders</h2>
+            <div id="ordersList" class="orders-list">
+                <!-- Orders will be loaded here -->
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <p>&copy; 2026 Coffee Shop. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <!-- Message Box -->
+    <div id="messageBox" class="message-box"></div>
+
+    <script src="app.js"></script>
+</body>
+</html>
